@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:todo_app_cifo/cubits/todo_list/todo_list_cubit.dart';
+import 'package:todo_app_cifo/cubits/todo_list/todo_list_state.dart';
 import 'package:todo_app_cifo/ui/widgets/search_filter_todo_widget.dart';
 import 'package:todo_app_cifo/ui/widgets/todo_header_widget.dart';
 import 'package:todo_app_cifo/ui/widgets/todo_item_widget.dart';
@@ -13,16 +16,25 @@ class TodosPage extends StatelessWidget {
       body: Column(
         children: [
           SizedBox(height: 70),
-          TodoHeaderWidget(),
+          BlocBuilder<TodoListCubit, TodoListState>(
+            builder: (context, state) {
+              return TodoHeaderWidget(count: state.activeTodoCount);
+            },
+          ),
           SizedBox(height: 20),
           SearchFilterTodoWidget(),
-          ListView.builder(
-            shrinkWrap: true,
-            itemCount: todosUserMock.length,
-            itemBuilder: (context, index) {
-              return TodoItemWidget(
-                desc: todosUserMock[index].desc,
-                isCompleted: todosUserMock[index].completed,
+          BlocBuilder<TodoListCubit, TodoListState>(
+            builder: (context, state) {
+              return ListView.builder(
+                shrinkWrap: true,
+                itemCount: state.todos.length,
+                itemBuilder: (context, index) {
+                  return TodoItemWidget(
+                    desc: state.todos[index].desc,
+                    isCompleted: state.todos[index].completed,
+                    id: state.todos[index].id,
+                  );
+                },
               );
             },
           ),

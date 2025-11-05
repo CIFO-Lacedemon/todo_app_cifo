@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TodoHeaderWidget extends StatelessWidget {
-  const TodoHeaderWidget({super.key});
+  final int count;
+  const TodoHeaderWidget({super.key, required this.count});
 
   @override
   Widget build(BuildContext context) {
@@ -9,7 +10,7 @@ class TodoHeaderWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: [
         Text("TODO", style: TextStyle(fontSize: 40)),
-        Text("Tareas por realizar"),
+        Text("Tareas por realizar: $count"),
       ],
     );
   }
