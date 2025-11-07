@@ -1,5 +1,5 @@
-import 'package:todo_app_cifo/models/todo_model.dart';
-import 'package:todo_app_cifo/utils/data.mock.dart';
+import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
+import 'package:todo_app_cifo/modules/todo/data/utils/data.mock.dart';
 
 class TodoListState {
   final List<TodoModel> todos;

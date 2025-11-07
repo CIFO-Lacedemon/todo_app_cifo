@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_cifo/cubits/todo_list/todo_list_state.dart';
-import 'package:todo_app_cifo/models/todo_model.dart';
+import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_state.dart';
+import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
 
 class TodoListCubit extends Cubit<TodoListState> {
   TodoListCubit() : super(TodoListState.initial()) {

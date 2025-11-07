@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:todo_app_cifo/cubits/todo_list/todo_list_cubit.dart';
+import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_cubit.dart';
 
 class TodoItemWidget extends StatelessWidget {
   final String desc;

@@ -1,4 +1,4 @@
-import 'package:todo_app_cifo/models/todo_model.dart';
+import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
 
 List<TodoModel> todosUserMock = [
   TodoModel(desc: "Hacer la cama", completed: false),
