@@ -16,6 +16,8 @@ class ListTodosWidget extends StatelessWidget {
           desc: todos[index].desc,
           isCompleted: todos[index].completed,
           id: todos[index].id,
+
+          todoModel: todos[index],
         );
       },
     );

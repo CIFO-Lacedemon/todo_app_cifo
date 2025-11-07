@@ -6,12 +6,14 @@ class TodoListState {
   final List<TodoModel> todosFiltered;
   final Filter selectedFilter;
   final int activeTodoCount;
+  final TodoModel? selectedTodo;
 
   TodoListState({
     required this.todos,
     required this.activeTodoCount,
     required this.todosFiltered,
     required this.selectedFilter,
+    required this.selectedTodo,
   });
 
   factory TodoListState.initial() {
@@ -20,6 +22,7 @@ class TodoListState {
       activeTodoCount: 0,
       todosFiltered: [],
       selectedFilter: Filter.all,
+      selectedTodo: null,
     );
   }
 
@@ -28,12 +31,14 @@ class TodoListState {
     int? activeTodoCount,
     List<TodoModel>? todosFiltered,
     Filter? selectedFilter,
+    TodoModel? selectedTodo,
   }) {
     return TodoListState(
       todos: todos ?? this.todos,
       activeTodoCount: activeTodoCount ?? this.activeTodoCount,
       todosFiltered: todosFiltered ?? this.todosFiltered,
       selectedFilter: selectedFilter ?? this.selectedFilter,
+      selectedTodo: selectedTodo ?? this.selectedTodo,
     );
   }
 }

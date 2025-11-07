@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_state.dart';
 import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
@@ -52,5 +53,36 @@ class TodoListCubit extends Cubit<TodoListState> {
     }
 
     emit(state.copyWith(todosFiltered: filteredTodos));
+  }
+
+  void searchTodo(String text) {
+    List<TodoModel> filteredTodos;
+
+    if (state.selectedFilter == Filter.active) {
+      filteredTodos = state.todos
+          .where((element) => element.desc.contains(text))
+          .where((element) => element.completed == false)
+          .toList();
+      emit(state.copyWith(todosFiltered: filteredTodos));
+    }
+
+    if (state.selectedFilter == Filter.completed) {
+      filteredTodos = state.todos
+          .where((element) => element.desc.contains(text))
+          .where((element) => element.completed == true)
+          .toList();
+      emit(state.copyWith(todosFiltered: filteredTodos));
+    }
+
+    if (state.selectedFilter == Filter.all) {
+      filteredTodos = state.todos
+          .where((element) => element.desc.contains(text))
+          .toList();
+      emit(state.copyWith(todosFiltered: filteredTodos));
+    }
+  }
+
+  void selectedCubit(TodoModel todo) {
+    emit(state.copyWith(selectedTodo: todo));
   }
 }
