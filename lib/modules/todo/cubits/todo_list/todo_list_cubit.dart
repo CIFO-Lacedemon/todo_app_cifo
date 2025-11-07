@@ -16,6 +16,7 @@ class TodoListCubit extends Cubit<TodoListState> {
     }).toList();
 
     emit(state.copyWith(todos: newTodos));
+    setFilteredTodos(state.selectedFilter);
 
     calculateActiveCount();
   }
@@ -26,5 +27,30 @@ class TodoListCubit extends Cubit<TodoListState> {
         .toList()
         .length;
     emit(state.copyWith(activeTodoCount: activeTodoCount));
+  }
+
+  void setFilteredTodos(Filter filter) {
+    List<TodoModel> filteredTodos;
+
+    switch (filter) {
+      case Filter.active:
+        filteredTodos = state.todos
+            .where((element) => element.completed == false)
+            .toList();
+        emit(state.copyWith(selectedFilter: Filter.active));
+        break;
+      case Filter.completed:
+        filteredTodos = state.todos
+            .where((element) => element.completed == true)
+            .toList();
+        emit(state.copyWith(selectedFilter: Filter.completed));
+        break;
+      case Filter.all:
+        filteredTodos = state.todos;
+        emit(state.copyWith(selectedFilter: Filter.all));
+        break;
+    }
+
+    emit(state.copyWith(todosFiltered: filteredTodos));
   }
 }

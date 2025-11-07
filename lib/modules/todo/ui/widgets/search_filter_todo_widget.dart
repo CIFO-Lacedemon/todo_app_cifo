@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
 import 'package:todo_app_cifo/modules/todo/ui/widgets/filter_button.dart';
 
 class SearchFilterTodoWidget extends StatelessWidget {
@@ -27,9 +28,9 @@ class SearchFilterTodoWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            FilterButton(text: "Todos"),
-            FilterButton(text: "Activos"),
-            FilterButton(text: "Completados"),
+            FilterButton(todo: Filter.all),
+            FilterButton(todo: Filter.active),
+            FilterButton(todo: Filter.completed),
           ],
         ),
       ],
