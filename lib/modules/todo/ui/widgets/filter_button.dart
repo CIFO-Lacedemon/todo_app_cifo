@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_cubit.dart';
+import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_state.dart';
 import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
 
 class FilterButton extends StatelessWidget {
@@ -9,10 +10,22 @@ class FilterButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
-      child: Text(getSpanishNameTodo(todo), style: TextStyle(fontSize: 20)),
-      onPressed: () {
-        context.read<TodoListCubit>().setFilteredTodos(todo);
+    return BlocBuilder<TodoListCubit, TodoListState>(
+      builder: (context, state) {
+        return TextButton(
+          child: Text(
+            getSpanishNameTodo(todo),
+            style: TextStyle(
+              fontSize: 20,
+              color: (state.selectedFilter == todo)
+                  ? Colors.purple
+                  : Colors.grey,
+            ),
+          ),
+          onPressed: () {
+            context.read<TodoListCubit>().setFilteredTodos(todo);
+          },
+        );
       },
     );
   }

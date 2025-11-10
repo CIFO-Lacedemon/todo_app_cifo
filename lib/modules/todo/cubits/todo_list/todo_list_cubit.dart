@@ -85,4 +85,14 @@ class TodoListCubit extends Cubit<TodoListState> {
   void selectedCubit(TodoModel todo) {
     emit(state.copyWith(selectedTodo: todo));
   }
+
+  void addTodo(String todoDesc) {
+    final TodoModel newTodo = TodoModel(desc: todoDesc);
+
+    final List<TodoModel> newTodos = [...state.todos, newTodo];
+
+    emit(state.copyWith(todos: newTodos, selectedFilter: Filter.all));
+
+    setFilteredTodos(state.selectedFilter);
+  }
 }

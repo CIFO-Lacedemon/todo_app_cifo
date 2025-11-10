@@ -5,11 +5,11 @@ import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_cubit.dart
 import 'package:todo_app_cifo/modules/todo/cubits/todo_list/todo_list_state.dart';
 import 'package:todo_app_cifo/modules/todo/data/models/todo_model.dart';
 
-// class TodoDetailsObject {
-//   final TodoModel? todoModel;
+class TodoDetailsObject {
+  final TodoModel? todoModel;
 
-//   TodoDetailsObject({required this.todoModel});
-// }
+  TodoDetailsObject({required this.todoModel});
+}
 
 class TodosDetailsPage extends StatelessWidget {
   // final TodoDetailsObject todoDetailsObject;
